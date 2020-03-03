@@ -1,0 +1,5 @@
+editoplab/
+projects/*
+
+!projects/editoplab.vcxproj
+!projects/editoplab.vcxproj.filters

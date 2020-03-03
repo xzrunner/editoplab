@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="dataset">
+      <UniqueIdentifier>{af3aae9f-beae-49b0-a854-eac6b9ea98ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{08ea75d2-ee56-4fe7-b706-8175dd47beaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="view">
+      <UniqueIdentifier>{4145d4af-e548-45ba-b1fa-01ac860b65c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataset\node">
+      <UniqueIdentifier>{b03c619b-6b07-4df5-bf27-0186bb1e27ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataset\pin">
+      <UniqueIdentifier>{a833f205-a8ca-4412-ab47-2de8ac4103b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools\rtti">
+      <UniqueIdentifier>{f29de1dd-b531-4189-9d20-b060c9894a67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="view\preview">
+      <UniqueIdentifier>{6e064124-7f51-4d0d-8a64-bbe84b04f508}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\editoplab\pin_cfg.h">
+      <Filter>dataset\pin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\editoplab\PinCallback.h">
+      <Filter>dataset\pin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\editoplab\PinType.h">
+      <Filter>dataset\pin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\editoplab\Node.h">
+      <Filter>dataset\node</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\editoplab\MessageID.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\editoplab\node_def_gen.h">
+      <Filter>tools\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\editoplab\node_regist_cfg.h">
+      <Filter>tools\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\editoplab\node_rttr_gen.h">
+      <Filter>tools\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\editoplab\RegistNodes.h">
+      <Filter>tools\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\editoplab\PreviewPage.h">
+      <Filter>view\preview</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\editoplab\WxPreviewCanvas.h">
+      <Filter>view\preview</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\editoplab\EditOpLab.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\PinCallback.cpp">
+      <Filter>dataset\pin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\Node.cpp">
+      <Filter>dataset\node</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\RegistNodes.cpp">
+      <Filter>tools\rtti</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\PreviewPage.cpp">
+      <Filter>view\preview</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\WxPreviewCanvas.cpp">
+      <Filter>view\preview</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\EditOpLab.cpp" />
+  </ItemGroup>
+</Project>
