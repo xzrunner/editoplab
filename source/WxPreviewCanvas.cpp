@@ -31,9 +31,9 @@ const uint32_t LIGHT_SELECT_COLOR = 0x88000088;
 namespace editoplab
 {
 
-WxPreviewCanvas::WxPreviewCanvas(ee0::WxStagePage* stage, ECS_WORLD_PARAM
+WxPreviewCanvas::WxPreviewCanvas(const ur2::Device& dev, ee0::WxStagePage* stage, ECS_WORLD_PARAM
                                  const ee0::RenderContext& rc)
-    : ee3::WxStageCanvas(stage, ECS_WORLD_VAR &rc, nullptr, true)
+    : ee3::WxStageCanvas(dev, stage, ECS_WORLD_VAR &rc, nullptr, true)
 {
 }
 
@@ -79,37 +79,38 @@ void WxPreviewCanvas::DrawBackground3D() const
 
 void WxPreviewCanvas::DrawForeground3D() const
 {
-    pt0::RenderContext rc;
-    rc.AddVar(
-        pt3::MaterialMgr::PositionUniforms::light_pos.name,
-        pt0::RenderVariant(sm::vec3(0, 2, -4))
-    );
-    if (m_camera->TypeID() == pt0::GetCamTypeID<pt3::PerspCam>())
-    {
-        auto persp = std::static_pointer_cast<pt3::PerspCam>(m_camera);
-        rc.AddVar(
-            pt3::MaterialMgr::PositionUniforms::cam_pos.name,
-            pt0::RenderVariant(persp->GetPos())
-        );
-    }
-    auto& wc = pt3::Blackboard::Instance()->GetWindowContext();
-    assert(wc);
-    rc.AddVar(
-        pt3::MaterialMgr::PosTransUniforms::view.name,
-        pt0::RenderVariant(wc->GetViewMat())
-    );
-    rc.AddVar(
-        pt3::MaterialMgr::PosTransUniforms::projection.name,
-        pt0::RenderVariant(wc->GetProjMat())
-    );
+    //pt0::RenderContext rc;
+    //rc.AddVar(
+    //    pt3::MaterialMgr::PositionUniforms::light_pos.name,
+    //    pt0::RenderVariant(sm::vec3(0, 2, -4))
+    //);
+    //if (m_camera->TypeID() == pt0::GetCamTypeID<pt3::PerspCam>())
+    //{
+    //    auto persp = std::static_pointer_cast<pt3::PerspCam>(m_camera);
+    //    rc.AddVar(
+    //        pt3::MaterialMgr::PositionUniforms::cam_pos.name,
+    //        pt0::RenderVariant(persp->GetPos())
+    //    );
+    //}
+    //auto& wc = pt3::Blackboard::Instance()->GetWindowContext();
+    //assert(wc);
+    //rc.AddVar(
+    //    pt3::MaterialMgr::PosTransUniforms::view.name,
+    //    pt0::RenderVariant(wc->GetViewMat())
+    //);
+    //rc.AddVar(
+    //    pt3::MaterialMgr::PosTransUniforms::projection.name,
+    //    pt0::RenderVariant(wc->GetProjMat())
+    //);
 
     tess::Painter pt;
 
     auto cam_mat = m_camera->GetProjectionMat() * m_camera->GetViewMat();
 
-    DrawSelected(pt, cam_mat, rc);
+    DrawSelected(pt, cam_mat);
 
-    pt2::RenderSystem::DrawPainter(pt);
+    ur2::RenderState rs;
+    pt2::RenderSystem::DrawPainter(m_dev, *GetRenderContext().ur_ctx, rs, pt);
 }
 
 void WxPreviewCanvas::DrawForeground2D() const
@@ -131,8 +132,7 @@ void WxPreviewCanvas::OnSelectionClear(const ee0::VariantSet& variants)
     m_selected.reset();
 }
 
-void WxPreviewCanvas::DrawSelected(tess::Painter& pt, const sm::mat4& cam_mat,
-                                   const pt0::RenderContext& rc) const
+void WxPreviewCanvas::DrawSelected(tess::Painter& pt, const sm::mat4& cam_mat) const
 {
 }
 
