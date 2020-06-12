@@ -142,7 +142,7 @@ bp::NodePtr WxPreviewCanvas::GetSelectedNode() const
         return nullptr;
     }
 
-    auto eval = m_graph_page->GetEval();
+    auto eval = m_graph_page->GetSceneTree()->GetCurrEval();
     if (!eval) {
         return nullptr;
     }
